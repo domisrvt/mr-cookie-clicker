@@ -22,6 +22,8 @@ var mysteryEventTimeout;
 var mysteryCountdownTime = 0;
 var mysteryImageUrl = 'https://m.media-amazon.com/images/I/71TX2dnHokL._AC_UY1000_.jpg';
 var tylerKillerEnabled = false;
+var magaHatCollectorEnabled = false;
+var magaHatCollectorCost = 20000000;
 var erikaClickerEnabled = false;
 var erikaClickerValue = 0;
 var erikaCost = 500000;
@@ -217,6 +219,16 @@ function triggerMysteryEvent() {
     mysteryImage.style.left = randomX + 'px';
     mysteryImage.style.top = randomY + 'px';
     
+    if (magaHatCollectorEnabled) {
+        setTimeout(function() {
+            if (mysteryEventActive) {
+                showNotification('MAGA Hat Collector grabbed the prize!');
+                closeMysteryEvent(true);
+            }
+        }, 500);
+        return;
+    }
+    
     var mysteryCountdownInterval = setInterval(function() {
         mysteryCountdownTime--;
         if (mysteryCountdownTime <= 0) {
@@ -283,6 +295,27 @@ function buyTylerKiller() {
         }
     } else {
         showNotification('Not enough cookies! Need 10,000,000 cookies for Tyler Killer!');
+    }
+}
+
+function buyMagaHatCollector() {
+    if (magaHatCollectorEnabled) {
+        showNotification('MAGA Hat Collector already purchased!');
+        return;
+    }
+    
+    if (score >= magaHatCollectorCost) {
+        score -= magaHatCollectorCost;
+        magaHatCollectorEnabled = true;
+        updateScore();
+        showNotification('MAGA Hat Collector recruited! Mystery prizes are auto-collected.');
+        var btn = document.getElementById('magaHatCollectorBtn');
+        if (btn) {
+            btn.innerText = 'MAGA Hat Collector (ACTIVATED)';
+            btn.disabled = true;
+        }
+    } else {
+        showNotification('Not enough cookies! Need ' + magaHatCollectorCost + ' cookies for MAGA Hat Collector!');
     }
 }
 
