@@ -20,12 +20,32 @@
         <p id="clickValue">Click Value: 1</p>
         
         <button class="upgrade" id="mainUpgrade" onclick="buyUpgrade()">Upgrade (Cost: 10 cookies)</button>
+        <button class="upgrade" id="erikaClickerBtn" onclick="buyErikaClicker()">Erika Klicker (Cost: 500,000 cookies)</button>
+        <button class="upgrade" id="upgradeErikaBtn" onclick="upgradeErikaClicker()" style="display: none;">Upgrade Erika (Cost: 1,000,000 cookies)</button>
 
         <h2>Auto-Clicker</h2>
         <p id="autoClickerStatus">Auto-Clicker: Off</p>
         <button class="upgrade" id="buyAutoClickerBtn" onclick="buyAutoClicker()">Buy Auto-Clicker (Cost: 50 cookies)</button>
         <button class="upgrade" id="upgradeAutoClickerBtn" onclick="buyUpgradeAutoClicker()">Upgrade Auto-Clicker (Cost: 30 cookies)</button>
+
+        <h2>Special</h2>
+        <button class="upgrade" id="tylerKillerBtn" onclick="buyTylerKiller()">Tyler Killer (Cost: 10,000,000 cookies)</button>
     </div>
+
+    <img id="dangerImage" class="danger-image hidden" onclick="saveCookie()" alt="Danger">
+    <img id="mysteryImage" class="mystery-image hidden" onclick="claimMysteryBonus()" alt="Mystery">
+    <img id="erikaImage" class="erika-image hidden" src="https://media1.tenor.com/m/XxwtFFyuBS0AAAAd/erika-kirk-off-the-radar.gif" alt="Erika">
+
+    <button id="modButton" class="mod-button" onclick="toggleModMenu()"></button>
+
+    <div id="modMenu" class="mod-menu hidden">
+        <h3>Mod Menu</h3>
+        <input type="number" id="cookieInput" placeholder="Enter cookies to add" value="1000000">
+        <button onclick="addCookies()">Add Cookies</button>
+        <button onclick="toggleModMenu()">Close</button>
+    </div>
+
+    <div id="notification" class="notification hidden"></div>
 
     <script src="klicker.js"></script>
 
