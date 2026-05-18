@@ -16,18 +16,18 @@ var dangerEventActive = false;
 var dangerEventTimeout;
 var dangerCountdownInterval;
 var dangerCountdownTime = 0;
-var dangerImageUrl = 'https://i.ibb.co/Wpv7wnsy/Untitled.jpg';
+var dangerImageUrl = 'https://static.wikia.nocookie.net/inconsistently-heinous/images/e/eb/Cookie-monster.webp/revision/latest?cb=20260103004509';
 var mysteryEventActive = false;
 var mysteryEventTimeout;
 var mysteryCountdownTime = 0;
-var mysteryImageUrl = 'https://m.media-amazon.com/images/I/71TX2dnHokL._AC_UY1000_.jpg';
-var tylerKillerEnabled = false;
-var magaHatCollectorEnabled = false;
-var magaHatCollectorCost = 20000000;
-var erikaClickerEnabled = false;
-var erikaClickerValue = 0;
-var erikaCost = 500000;
-var erikaUpgradeCost = 1000000;
+var mysteryImageUrl = 'https://media.tenor.com/wmXw4IwUrB8AAAAM/dice-roll-the-dice.gif';
+var cookieMuncherStopperEnabled = false;
+var angryGambleEnabled = false;
+var angryGambleCost = 20000000;
+var mrFireCookieClickerEnabled = false;
+var mrFireCookieClickerValue = 0;
+var mrFireCookieClickerCost = 500000;
+var mrFireCookieClickerUpgradeCost = 1000000;
 
 function clickCookie() {
     var cookie = document.getElementById('cookie');
@@ -35,7 +35,7 @@ function clickCookie() {
     void cookie.offsetWidth;
     cookie.classList.add('clicked');
 
-    score += clickValue + erikaClickerValue;
+    score += clickValue + mrFireCookieClickerValue;
     updateScore();
     checkAchievements();
 }
@@ -175,12 +175,12 @@ function closeDangerEvent(saved) {
     var dangerImage = document.getElementById('dangerImage');
     dangerImage.classList.add('hidden');
     
-    if (!saved && !tylerKillerEnabled) {
+    if (!saved && !cookieMuncherStopperEnabled) {
         score = 0;
         updateScore();
         showNotification('Cookie was crumbled! Lost all cookies!');
-    } else if (!saved && tylerKillerEnabled) {
-        showNotification('Tyler already killed the crumbler!');
+    } else if (!saved && cookieMuncherStopperEnabled) {
+        showNotification('Cookie Muncher was already fed so the cookie was saved!');
     } else {
         score += 100;
         updateScore();
@@ -219,10 +219,10 @@ function triggerMysteryEvent() {
     mysteryImage.style.left = randomX + 'px';
     mysteryImage.style.top = randomY + 'px';
     
-    if (magaHatCollectorEnabled) {
+    if (angryGambleEnabled) {
         setTimeout(function() {
             if (mysteryEventActive) {
-                showNotification('MAGA Hat Collector grabbed the prize!');
+                showNotification('Angry Gamble grabbed the prize!');
                 closeMysteryEvent(true);
             }
         }, 500);
@@ -277,96 +277,96 @@ function showNotification(message) {
     }, 3000);
 }
 
-function buyTylerKiller() {
-    if (tylerKillerEnabled) {
-        showNotification('Tyler Killer already purchased!');
+function buyCookieMuncherStopper() {
+    if (cookieMuncherStopperEnabled) {
+        showNotification('Cookie Muncher Stopper already purchased!');
         return;
     }
     
     if (score >= 10000000) {
         score -= 10000000;
-        tylerKillerEnabled = true;
+        cookieMuncherStopperEnabled = true;
         updateScore();
-        showNotification('Tyler Killer activated! Cookie crumbler is dead!');
-        var btn = document.getElementById('tylerKillerBtn');
+        showNotification('Cookie Muncher Stopper activated! Cookie muncher is stopped!');
+        var btn = document.getElementById('cookieMuncherStopperBtn');
         if (btn) {
-            btn.innerText = 'Tyler Killer (ACTIVATED)';
+            btn.innerText = 'Cookie Muncher Stopper (ACTIVATED)';
             btn.disabled = true;
         }
     } else {
-        showNotification('Not enough cookies! Need 10,000,000 cookies for Tyler Killer!');
+        showNotification('Not enough cookies! Need 10,000,000 cookies for Cookie Muncher Stopper!');
     }
 }
 
-function buyMagaHatCollector() {
-    if (magaHatCollectorEnabled) {
-        showNotification('MAGA Hat Collector already purchased!');
+function buyAngryGamble() {
+    if (angryGambleEnabled) {
+        showNotification('Angry Gamble already purchased!');
         return;
     }
     
-    if (score >= magaHatCollectorCost) {
-        score -= magaHatCollectorCost;
-        magaHatCollectorEnabled = true;
+    if (score >= angryGambleCost) {
+        score -= angryGambleCost;
+        angryGambleEnabled = true;
         updateScore();
-        showNotification('MAGA Hat Collector recruited! Mystery prizes are auto-collected.');
-        var btn = document.getElementById('magaHatCollectorBtn');
+        showNotification('Angry Gamble recruited! Mystery prizes are auto-collected.');
+        var btn = document.getElementById('angryGambleBtn');
         if (btn) {
-            btn.innerText = 'MAGA Hat Collector (ACTIVATED)';
+            btn.innerText = 'Angry Gamble (ACTIVATED)';
             btn.disabled = true;
         }
     } else {
-        showNotification('Not enough cookies! Need ' + magaHatCollectorCost + ' cookies for MAGA Hat Collector!');
+        showNotification('Not enough cookies! Need ' + angryGambleCost + ' cookies for Angry Gamble!');
     }
 }
 
-function buyErikaClicker() {
-    if (erikaClickerEnabled) {
-        showNotification('Erika Klicker already purchased!');
+function buyMrFireCookieClicker() {
+    if (mrFireCookieClickerEnabled) {
+        showNotification('Mr Fire Cookie Clicker already purchased!');
         return;
     }
     
-    if (score >= erikaCost) {
-        score -= erikaCost;
-        erikaClickerEnabled = true;
-        erikaClickerValue = 10000;
+    if (score >= mrFireCookieClickerCost) {
+        score -= mrFireCookieClickerCost;
+        mrFireCookieClickerEnabled = true;
+        mrFireCookieClickerValue = 10000;
         updateScore();
-        showNotification('Erika Klicker activated! +10,000 per click!');
-        var btn = document.getElementById('erikaClickerBtn');
-        var upgradeBtn = document.getElementById('upgradeErikaBtn');
-        var erikaImg = document.getElementById('erikaImage');
+        showNotification('Mr Fire Cookie Clicker activated! +10,000 per click!');
+        var btn = document.getElementById('mrFireCookieClickerBtn');
+        var upgradeBtn = document.getElementById('upgradeMrFireCookieClickerBtn');
+        var mrFireCookieClickerImg = document.getElementById('mrFireCookieClickerImage');
         if (btn) {
-            btn.innerText = 'Erika Klicker (ACTIVE)';
+            btn.innerText = 'Mr Fire Cookie Clicker (ACTIVE)';
             btn.disabled = true;
         }
         if (upgradeBtn) {
             upgradeBtn.style.display = 'block';
         }
-        if (erikaImg) {
-            erikaImg.classList.remove('hidden');
+        if (mrFireCookieClickerImg) {
+            mrFireCookieClickerImg.classList.remove('hidden');
         }
     } else {
-        showNotification('Not enough cookies! Need ' + erikaCost + ' cookies for Erika Klicker!');
+        showNotification('Not enough cookies! Need ' + mrFireCookieClickerCost + ' cookies for Mr Fire Cookie Clicker!');
     }
 }
 
-function upgradeErikaClicker() {
-    if (!erikaClickerEnabled) {
-        showNotification('Buy Erika Klicker first!');
+function upgradeMrFireCookieClicker() {
+    if (!mrFireCookieClickerEnabled) {
+        showNotification('Buy Mr Fire Cookie Clicker first!');
         return;
     }
     
-    if (score >= erikaUpgradeCost) {
-        score -= erikaUpgradeCost;
-        erikaClickerValue += 10000;
-        erikaUpgradeCost = Math.ceil(erikaUpgradeCost * 1.8);
+    if (score >= mrFireCookieClickerUpgradeCost) {
+        score -= mrFireCookieClickerUpgradeCost;
+        mrFireCookieClickerValue += 10000;
+        mrFireCookieClickerUpgradeCost = Math.ceil(mrFireCookieClickerUpgradeCost * 1.8);
         updateScore();
-        var upgradeBtn = document.getElementById('upgradeErikaBtn');
+        var upgradeBtn = document.getElementById('upgradeMrFireCookieClickerBtn');
         if (upgradeBtn) {
-            upgradeBtn.innerText = 'Upgrade Erika (Cost: ' + erikaUpgradeCost + ' cookies)';
+            upgradeBtn.innerText = 'Upgrade Mr Fire Cookie Clicker (Cost: ' + mrFireCookieClickerUpgradeCost + ' cookies)';
         }
-        showNotification('Erika upgraded! Now +' + erikaClickerValue + ' per click!');
+        showNotification('Mr Fire Cookie Clicker upgraded! Now +' + mrFireCookieClickerValue + ' per click!');
     } else {
-        showNotification('Not enough cookies! Need ' + erikaUpgradeCost + ' cookies!');
+        showNotification('Not enough cookies! Need ' + mrFireCookieClickerUpgradeCost + ' cookies!');
     }
 }
 

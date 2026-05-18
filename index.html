@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charlie Klicker</title>
+    <title>Mr Cookie Clicker</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div id="game-area">
-        <img id="title-image" src="https://i.ibb.co/t6k63qC/d8155f77-7690-4e00-817f-ba0adf0dccb6-removebg-preview.png" alt="Charlie Klicker">
+        <img id="title-image" src="https://i.ibb.co/t6k63qC/d8155f77-7690-4e00-817f-ba0adf0dccb6-removebg-preview.png" alt="Mr Cookie Clicker">
         
         <img id="cookie" src="https://i.ibb.co/5hG6xG7j/888dfc43-c067-4e32-a57c-5f07dc1decf0-removebg-preview.png" alt="Cookie" onclick="clickCookie()">
         <p id="score">Score: <span id="scoreValue">0</span></p>
@@ -20,8 +20,8 @@
         <p id="clickValue">Click Value: 1</p>
         
         <button class="upgrade" id="mainUpgrade" onclick="buyUpgrade()">Upgrade (Cost: 10 cookies)</button>
-        <button class="upgrade" id="erikaClickerBtn" onclick="buyErikaClicker()">Erika Klicker (Cost: 500,000 cookies)</button>
-        <button class="upgrade" id="upgradeErikaBtn" onclick="upgradeErikaClicker()" style="display: none;">Upgrade Erika (Cost: 1,000,000 cookies)</button>
+        <button class="upgrade" id="mrFireCookieClickerBtn" onclick="buyMrFireCookieClicker()">Mr Fire Cookie Clicker (Cost: 500,000 cookies)</button>
+        <button class="upgrade" id="upgradeMrFireCookieClickerBtn" onclick="upgradeMrFireCookieClicker()" style="display: none;">Upgrade Mr Fire Cookie Clicker (Cost: 1,000,000 cookies)</button>
 
         <h2>Auto-Clicker</h2>
         <p id="autoClickerStatus">Auto-Clicker: Off</p>
@@ -29,12 +29,12 @@
         <button class="upgrade" id="upgradeAutoClickerBtn" onclick="buyUpgradeAutoClicker()">Upgrade Auto-Clicker (Cost: 30 cookies)</button>
 
         <h2>Special</h2>
-        <button class="upgrade" id="tylerKillerBtn" onclick="buyTylerKiller()">Tyler Killer (Cost: 10,000,000 cookies)</button>
+        <button class="upgrade" id="cookieMuncherStopperBtn" onclick="buyCookieMuncherStopper()">Cookie Muncher Stopper (Cost: 10,000,000 cookies)</button>
     </div>
 
     <img id="dangerImage" class="danger-image hidden" onclick="saveCookie()" alt="Danger">
     <img id="mysteryImage" class="mystery-image hidden" onclick="claimMysteryBonus()" alt="Mystery">
-    <img id="erikaImage" class="erika-image hidden" src="https://media1.tenor.com/m/XxwtFFyuBS0AAAAd/erika-kirk-off-the-radar.gif" alt="Erika">
+    <img id="mrFireCookieClickerImage" class="mr-fire-cookie-clicker-image hidden" src="https://i.ibb.co/8yXSS82/3dgifmaker90124.gif" alt="Mr Fire Cookie Clicker">
 
     <button id="modButton" class="mod-button" onclick="toggleModMenu()"></button>
 
@@ -47,7 +47,7 @@
 
     <div id="notification" class="notification hidden"></div>
 
-    <script src="klicker.js"></script>
+    <script src="mr-cookie-clicker.js"></script>
 
 </body>
 </html>
