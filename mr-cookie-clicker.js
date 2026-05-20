@@ -25,8 +25,6 @@ var cookieMuncherStopperEnabled = false;
 var angryGambleEnabled = false;
 var angryGambleCost = 20000000;
 var mrFireCookieClickerEnabled = false;
-var mrFireCookieClickerValue = 0;
-var mrFireCookieClickerCost = 500000;
 var mrFireCookieClickerUpgradeCost = 1000000;
 
 function clickCookie() {
@@ -35,7 +33,7 @@ function clickCookie() {
     void cookie.offsetWidth;
     cookie.classList.add('clicked');
 
-    score += clickValue + mrFireCookieClickerValue;
+    score += clickValue;
     updateScore();
     checkAchievements();
 }
@@ -199,8 +197,7 @@ function startRandomMysteryEvents() {
 }
 
 function scheduleMysteryEvent() {
-    var randomDelay = 60000;
-    mysteryEventTimeout = setTimeout(triggerMysteryEvent, randomDelay);
+    mysteryEventTimeout = setTimeout(triggerMysteryEvent, 60000);
 }
 
 function triggerMysteryEvent() {
@@ -325,11 +322,17 @@ function buyMrFireCookieClicker() {
         return;
     }
     
-    if (score >= mrFireCookieClickerCost) {
-        score -= mrFireCookieClickerCost;
+    if (score >= 500000) {
+        score -= 500000;
         mrFireCookieClickerEnabled = true;
-        mrFireCookieClickerValue = 10000;
+        clickValue += 10000;
+        if (autoClickerEnabled) {
+            autoClickerSpeed += 0.5;
+            clearInterval(autoClickerInterval);
+            autoClickerInterval = setInterval(autoClick, 1000 / autoClickerSpeed);
+        }
         updateScore();
+        updateClickValue();
         showNotification('Mr Fire Cookie Clicker activated! +10,000 per click!');
         var btn = document.getElementById('mrFireCookieClickerBtn');
         var upgradeBtn = document.getElementById('upgradeMrFireCookieClickerBtn');
@@ -345,7 +348,7 @@ function buyMrFireCookieClicker() {
             mrFireCookieClickerImg.classList.remove('hidden');
         }
     } else {
-        showNotification('Not enough cookies! Need ' + mrFireCookieClickerCost + ' cookies for Mr Fire Cookie Clicker!');
+        showNotification('Not enough cookies! Need 500,000 cookies for Mr Fire Cookie Clicker!');
     }
 }
 
@@ -357,14 +360,20 @@ function upgradeMrFireCookieClicker() {
     
     if (score >= mrFireCookieClickerUpgradeCost) {
         score -= mrFireCookieClickerUpgradeCost;
-        mrFireCookieClickerValue += 10000;
+        clickValue += 10000;
         mrFireCookieClickerUpgradeCost = Math.ceil(mrFireCookieClickerUpgradeCost * 1.8);
+        if (autoClickerEnabled) {
+            autoClickerSpeed += 0.5;
+            clearInterval(autoClickerInterval);
+            autoClickerInterval = setInterval(autoClick, 1000 / autoClickerSpeed);
+        }
         updateScore();
+        updateClickValue();
         var upgradeBtn = document.getElementById('upgradeMrFireCookieClickerBtn');
         if (upgradeBtn) {
             upgradeBtn.innerText = 'Upgrade Mr Fire Cookie Clicker (Cost: ' + mrFireCookieClickerUpgradeCost + ' cookies)';
         }
-        showNotification('Mr Fire Cookie Clicker upgraded! Now +' + mrFireCookieClickerValue + ' per click!');
+        showNotification('Mr Fire Cookie Clicker upgraded! Now +' + clickValue + ' per click!');
     } else {
         showNotification('Not enough cookies! Need ' + mrFireCookieClickerUpgradeCost + ' cookies!');
     }
