@@ -1,4 +1,5 @@
-﻿// JavaScript code for the cookie clicker game with upgrades, auto-clicker, and achievements
+﻿// JavaScript code for the cookie clicker game with upgrades, auto-clicker, and achievements 
+// code based off of https://onecompiler.com/html/423wemyxm
 var score = 0;
 var clickValue = 1;
 var autoClickerEnabled = false;
@@ -383,16 +384,3 @@ updateAutoClickerButtons();
 updateUpgradeButton();
 startRandomDangerEvents();
 startRandomMysteryEvents();
-
-function toggleModMenu() {
-    var modMenu = document.getElementById('modMenu');
-    modMenu.classList.toggle('hidden');
-}
-
-function addCookies() {
-    var input = document.getElementById('cookieInput');
-    var amount = parseInt(input.value) || 0;
-    score += amount;
-    updateScore();
-    showNotification('Added ' + amount + ' cookies!');
-}

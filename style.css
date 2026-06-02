@@ -112,81 +112,15 @@
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #333;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 15px 20px;
-    border-radius: 5px;
-    z-index: 1001;
     max-width: 400px;
     text-align: center;
-    font-size: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-size: 26px;
 }
 
 .notification.hidden {
     display: none;
-}
-.mod-button {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    width: 5px;
-    height: 5px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 500;
-}
-
-.mod-menu {
-    position: fixed;
-    top: 50px;
-    right: 10px;
-    background-color: #2a2a2a;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    z-index: 501;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
-
-.mod-menu.hidden {
-    display: none;
-}
-
-.mod-menu h3 {
-    margin-top: 0;
-    text-align: center;
-}
-
-.mod-menu input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #444;
-    background-color: #1a1a1a;
-    color: white;
-    border-radius: 5px;
-}
-
-.mod-menu button {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 5px;
-    background-color: #ff6b6b;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.mod-menu button:hover {
-    background-color: #ff5252;
-}
-
-.mod-menu button:last-child {
-    margin-bottom: 0;
 }
 
 .mr-fire-cookie-clicker-image {
@@ -194,8 +128,6 @@
     bottom: 20px;
     left: 20px;
     width: 150px;
-    height: auto;
-    z-index: 1002;
 }
 
 .mr-fire-cookie-clicker-image.hidden {
